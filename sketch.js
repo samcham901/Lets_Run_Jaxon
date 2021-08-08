@@ -11,22 +11,26 @@ function preload(){
 function setup(){
   createCanvas(200,600);
   //create sprites here
+  
+  road = createSprite(100,height/2,200,600);
+  road.addImage(roadImg)
+  
+  road.VelocityY = 4
+  road.scale = 1.2
+  
   Jaxon = createSprite(100, 275, 50, 50);
   Jaxon.addAnimation("Running", Jaxon_running);
-  Jaxon.scale = 3
+  Jaxon.scale = 0.07
   edges = createEdgeSprites();
-
-  road = createSprite(100, 300, 200, 600);
-  road.addImage(roadImg)
-  road.VelocityY = 3
-  
 }
 
 function draw() {
   background(roadImg);
-  if(road.y<0){
-  road.y=canvas.height/2
+
+  if(road.y>400){
+  road.y=height/2
   }
+
   Jaxon.x = mouseX
   Jaxon.y = mouseY
   Jaxon.collide(edges)
